@@ -9,19 +9,19 @@ const Customer = sequelize.define('customer', {
     },
     username: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
     },
     password: {
         type: DataTypes.STRING(255),
-        allowNull: false,
+        allowNull: true,
     },
     name: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
     },
     email: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
     },
     phone_number: {
         type: DataTypes.STRING(20),
