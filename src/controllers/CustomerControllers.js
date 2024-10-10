@@ -120,7 +120,21 @@ exports.registerCustomer = async (req, res) => {
       .json({ message: "Vui lòng cung cấp đầy đủ thông tin." });
   }
 
+  
+
   try {
+    // Kiểm tra xem email đã tồn tại chưa
+    const existingCustomerByEmail = await Customer.findOne({ where: { email } });
+    if (existingCustomerByEmail) {
+      return res.status(400).json({ message: "Email đã tồn tại." });
+    }
+
+    // Kiểm tra xem username đã tồn tại chưa
+    const existingCustomerByUsername = await Customer.findOne({ where: { username } });
+    if (existingCustomerByUsername) {
+      return res.status(400).json({ message: "Username đã tồn tại." });
+    }
+
     // Tạo khách hàng mới
     const newCustomer = await Customer.create({
       name,

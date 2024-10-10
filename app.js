@@ -3,20 +3,24 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const customerRoutes = require('./src/routes/customerRoutes');
-const adminRoutes = require('./src/routes/adminRoutes') // Đường dẫn tới customerRoutes
+const adminRoutes = require('./src/routes/adminRoutes') 
+const invidualRoutes = require('./src/routes/invidualRoutes');
+const blogRoutes = require('./src/routes/blogRoutes')
+const paymentMethodRoutes = require('./src/routes/PaymentMethodRoutes')
 const db = require('./src/config/db');
 
 
-// Tạo ứng dụng Express
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 
 // Routes
-app.use('/api/customers', customerRoutes); // Kết nối route khách hàng
+app.use('/api/customers', customerRoutes); 
 app.use('/api/admin', adminRoutes);
+app.use('/api/invidualKoi', invidualRoutes);
+app.use('/api/blog', blogRoutes);
+app.use('/api/paymentMethod', paymentMethodRoutes);
 
 module.exports = app;
