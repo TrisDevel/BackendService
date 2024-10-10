@@ -8,6 +8,7 @@ const invidualRoutes = require('./src/routes/invidualRoutes');
 const blogRoutes = require('./src/routes/blogRoutes')
 const paymentMethodRoutes = require('./src/routes/PaymentMethodRoutes')
 const PaymentRoutes = require('./src/routes/paymentRoutes')
+const BatchRoutes = require('./src/routes/batchRoutes')
 const db = require('./src/config/db');
 
 
@@ -24,5 +25,6 @@ app.use('/api/invidualKoi', invidualRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/paymentMethod', paymentMethodRoutes);
 app.use('/api/payment', PaymentRoutes);
+app.use('/api/batchKoi', BatchRoutes);
 
 module.exports = app;
