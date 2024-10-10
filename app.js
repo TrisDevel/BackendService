@@ -7,6 +7,7 @@ const adminRoutes = require('./src/routes/adminRoutes')
 const invidualRoutes = require('./src/routes/invidualRoutes');
 const blogRoutes = require('./src/routes/blogRoutes')
 const paymentMethodRoutes = require('./src/routes/PaymentMethodRoutes')
+const PaymentRoutes = require('./src/routes/paymentRoutes')
 const db = require('./src/config/db');
 
 
@@ -22,5 +23,6 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/invidualKoi', invidualRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/paymentMethod', paymentMethodRoutes);
+app.use('/api/payment', PaymentRoutes);
 
 module.exports = app;

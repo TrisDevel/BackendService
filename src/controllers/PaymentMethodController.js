@@ -1,19 +1,21 @@
 const PaymentMethod = require('../models/PaymentMethod');
 
 const createPaymentMethod = async (req, res) => {
-  const { payment_method } = req.body;
-
-  try {
-    const newPaymentMethod = await PaymentMethod.create({
-      payment_method,
-    });
-
-    res.status(201).json({ message: 'Tạo phương thức thanh toán thành công', paymentMethod: newPaymentMethod });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Tạo phương thức thanh toán thất bại', error });
-  }
-};
+    const { payment_method } = req.body;
+  
+    if (!payment_method) {
+      return res.status(400).json({ message: 'Phương thức thanh toán không được bỏ trống' });
+    }
+  
+    try {
+      const newPaymentMethod = await PaymentMethod.create({ payment_method });
+      res.status(201).json({ message: 'Tạo phương thức thanh toán thành công', newPaymentMethod });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Lỗi khi tạo phương thức thanh toán', error });
+    }
+  };
+  
 
 const getPaymentMethodById = async (req, res) => {
     const { id } = req.params;
