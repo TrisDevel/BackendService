@@ -3,7 +3,7 @@ const serviceAccount = require('../firebase/koi-farm-shop-fc559-firebase-adminsd
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    storageBucket: 'koi-farm-shop-fc559.appspot.com' // Thay bằng Firebase Storage URL của bạn
+    storageBucket: 'koi-farm-shop-fc559.appspot.com' 
 });
 
 const bucket = admin.storage().bucket();

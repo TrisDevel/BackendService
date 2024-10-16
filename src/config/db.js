@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-require('dotenv').config();  // Đọc biến môi trường từ .env
+require('dotenv').config();  
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
