@@ -49,6 +49,10 @@ const IndividualKoiFish = sequelize.define('IndividualKoiFish', {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
     },
+    type: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+    },
     image: {
         type: DataTypes.TEXT, // Lưu URL của ảnh từ Firebase
         allowNull: false,

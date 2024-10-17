@@ -33,7 +33,7 @@ exports.loginCustomer = async (req, res) => {
       code: 200,
       data: {
         token: token,
-        username: customer.username, // trả về username
+        name: customer.name, // trả về username
         userId: customer.id,
       },
     });

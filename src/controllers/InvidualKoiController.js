@@ -43,7 +43,7 @@ const createKoiFish = (req, res) => {
       return res.status(400).json({ message: err.message });
     }
 
-    const { category_id, name, origin, gender, age, size, breed, description, price, certificate } = req.body;
+    const { category_id, name, origin, gender, age, size, breed, description, price,type, certificate } = req.body;
     const imageFile = req.file; // File hình ảnh từ client (nếu có)
 
     try {
@@ -66,6 +66,7 @@ const createKoiFish = (req, res) => {
         breed,
         description,
         price,
+        type,
         image: imageUrl,  // URL ảnh từ Firebase
         certificate,
       });
@@ -89,7 +90,6 @@ const getKoiFishById = async (req, res) => {
     if (!koiFish) {
       return res.status(404).json({ message: 'Cá Koi không tồn tại' });
     }
-
     res.status(200).json(koiFish);
   } catch (error) {
     console.error(error);
@@ -112,7 +112,7 @@ const getAllKoiFish = async (req, res) => {
 // Cập nhật thông tin một cá Koi dựa trên ID
 const updateKoiFish = async (req, res) => {
   const { id } = req.params;
-  const { category_id, name, origin, gender, age, size, breed, description, price, certificate } = req.body;
+  const { category_id, name, origin, gender, age, size, breed, description, price, type, certificate } = req.body;
   const imageFile = req.file; // File hình ảnh từ client (nếu có)
 
   try {
@@ -139,6 +139,7 @@ const updateKoiFish = async (req, res) => {
       breed,
       description,
       price,
+      type,
       image: imageUrl,
       certificate,
     });
