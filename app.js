@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const emailSignUpRoutes = require('./src/middleware/EmailNotification/routes/emailSignUpRoutes');
 const customerRoutes = require('./src/routes/customerRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
 const invidualRoutes = require('./src/routes/invidualRoutes');
@@ -48,5 +49,9 @@ app.use((err, req, res, next) => {
 app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found' });
 });
+
+
+
+app.use('/api/email', emailSignUpRoutes);
 
 module.exports = app;
