@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const { setMaxListeners } = require('nodemailer/lib/xoauth2');
 
 const IndividualKoiFish = sequelize.define('IndividualKoiFish', {
     id: {
@@ -38,11 +39,11 @@ const IndividualKoiFish = sequelize.define('IndividualKoiFish', {
         allowNull: false,
     },
     breed: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING(10000),
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING(1000),
+        type: DataTypes.STRING(),
         allowNull: true,
     },
     price: {

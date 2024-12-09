@@ -46,13 +46,31 @@ exports.loginCustomer = async (req, res) => {
 // Tạo mới khách hàng
 exports.createCustomer = async (req, res) => {
   try {
+    // Tạo customer mới trong database
     const customer = await Customer.create(req.body);
-    res.status(201).json(customer);
+
+    // Tạo token từ ID và email người dùng
+    const token = jwt.sign(
+      { id: customer.id, email: customer.email },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: '1d' }
+    );
+
+    // Trả về token và thông tin người dùng theo cùng cấu trúc như login
+    res.status(201).json({
+      code: 200,
+      data: {
+        token: token,
+        username: customer.username,
+        userId: customer.id,
+      },
+      message: 'Registration successful',
+    });
   } catch (error) {
+    console.error('Error during registration:', error.message);
     res.status(400).json({ error: error.message });
   }
 };
-
 // Lấy danh sách tất cả khách hàng
 exports.getAllCustomers = async (req, res) => {
   try {
