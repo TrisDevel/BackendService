@@ -52,4 +52,8 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found' });
 });
 
+
+
+app.use('/api/email', emailSignUpRoutes);
+
 module.exports = app;
