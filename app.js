@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const emailSignUpRoutes = require('./src/middleware/EmailNotification/routes/emailSignUpRoutes');
 const customerRoutes = require('./src/routes/customerRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
 const invidualRoutes = require('./src/routes/invidualRoutes');
@@ -28,6 +29,8 @@ app.use('/api/paymentMethod', paymentMethodRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/batchKoi', batchRoutes);
 app.use('/api/orders', orderRoutes);
+
+app.use('/api/email', emailSignUpRoutes);
 
 // Middleware xử lý lỗi của body-parser khi gặp JSON không hợp lệ
 app.use((err, req, res, next) => {
